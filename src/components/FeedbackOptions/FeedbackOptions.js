@@ -3,22 +3,23 @@ import s from './FeedbackOptions.module.css';
 
 export default function FeedbackOptions({ options, onLeaveFeedback }) {
   return (
-    <div>
-      {Object.keys(options).map(option => (
-        <button
-          className={s.button}
-          type="button"
-          key={option}
-          onClick={() => onLeaveFeedback(option)}
-        >
-          {option}
-        </button>
+    <ul>
+      {options.map(option => (
+        <li key={option} className={s.item}>
+          <button
+            className={s.button}
+            type="button"
+            onClick={() => onLeaveFeedback(option)}
+          >
+            {option}
+          </button>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
 
 FeedbackOptions.propTypes = {
-  options: PropTypes.object.isRequired,
+  options: PropTypes.array.isRequired,
   onLeaveFeedback: PropTypes.func.isRequired,
 };
